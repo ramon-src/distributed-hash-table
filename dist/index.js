@@ -1,4 +1,6 @@
-const net = require("net");
+"use strict";
+
+var net = require("net");
 
 // Create a socket (client) that connects to the server
 var socket = new net.Socket();
@@ -15,3 +17,4 @@ socket.on("put", function (data) {
     // Close the connection
     socket.end();
 });
+//# sourceMappingURL=index.js.map

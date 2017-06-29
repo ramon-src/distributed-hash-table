@@ -1,12 +1,10 @@
-const net = require("net");
+'use strict';
+
+var net = require("net");
 
 // Create a simple server
 var server = net.createServer(function (conn) {
-    var _hashtable = [
-        ['teste', {'valor': 151, 'date': new Date()}],
-        ['teste2', {'valor': 1513, 'date': new Date()}],
-        ['teste3', {'valor': 151, 'date': new Date()}],
-    ];
+    var _hashtable = [['teste', { 'valor': 151, 'date': new Date() }], ['teste2', { 'valor': 1513, 'date': new Date() }], ['teste3', { 'valor': 151, 'date': new Date() }]];
     console.log("Server: Client connected");
 
     // If connection is closed
@@ -39,14 +37,11 @@ var server = net.createServer(function (conn) {
     });
 
     // Let's response with a hello message
-    conn.write(
-        JSON.stringify(
-            {response: "Hey there client!"}
-        )
-    );
+    conn.write(JSON.stringify({ response: "Hey there client!" }));
 });
 
 // Listen for connections
 server.listen(61337, "localhost", function () {
     console.log("Server: Listening");
 });
+//# sourceMappingURL=server.js.map
