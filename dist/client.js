@@ -1,5 +1,7 @@
-const net = require("net");
-const machines = require("./machines.js");
+"use strict";
+
+var net = require("net");
+var machines = require("./machines.js");
 
 // Create a socket (client) that connects to the server
 
@@ -16,14 +18,23 @@ var dataToChange = {
  * Get machines that match with element key
  */
 
-collect_start = function (machines, cb) {
+collect_start = function collect_start(machines, cb) {
     collect(0, machines, {}, cb);
-}
+};
 
-collect = function (i, machines, versions, cb) {
+collect = function (_collect) {
+    function collect(_x, _x2, _x3, _x4) {
+        return _collect.apply(this, arguments);
+    }
 
-    if (i >= machines.length)
-        cb(versions);
+    collect.toString = function () {
+        return _collect.toString();
+    };
+
+    return collect;
+}(function (i, machines, versions, cb) {
+
+    if (i >= machines.length) cb(versions);
 
     console.log("Máquina encontrada: %s", machine[1].ip);
 
@@ -51,21 +62,14 @@ collect = function (i, machines, versions, cb) {
                 versions.push([machine[1].ip, dataFromServer]);
             }
 
-            collect(i+1, machines, versions, cb);
+            collect(i + 1, machines, versions, cb);
         }
     });
-
-
-}
-machines.machines.forEach(function (machine) {
-
-
 });
+machines.machines.forEach(function (machine) {});
 
-
-
-versions.forEach(function (machine){
-console.log(machine);
+versions.forEach(function (machine) {
+    console.log(machine);
     // var socket = new net.Socket();
     //
     // var buffer = '';
@@ -93,3 +97,4 @@ console.log(machine);
     //
     // socket.write(JSON.stringify(['put', dataToChange]) + '\n');
 });
+//# sourceMappingURL=client.js.map

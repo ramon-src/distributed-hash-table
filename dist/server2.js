@@ -1,9 +1,11 @@
-const net = require("net");
+"use strict";
+
+var net = require("net");
 
 var server = net.createServer(function (conn) {
     console.log("Server: Client connected");
 
-    var hashtable = [['one', {value: 1, date: "4/7/2017"}], ['two', {value: 2, date: "4/7/2017"}]];
+    var hashtable = [['one', { value: 1, date: "3/7/2017" }], ['two', { value: 2, date: "4/7/2017" }]];
 
     // If connection is closed
     conn.on("end", function () {
@@ -57,7 +59,7 @@ var server = net.createServer(function (conn) {
                 }
             });
             if (!hasKey) {
-                hashtable.push([obj[1].key, {value: obj[1].value, date: obj[1].date}]);
+                hashtable.push([obj[1].key, { value: obj[1].value, date: obj[1].date }]);
 
                 hashtable.forEach(function (table) {
                     if (table[0] == obj[1].key) {
@@ -68,19 +70,17 @@ var server = net.createServer(function (conn) {
         }
 
         if (obj[0] == 'get') {
-            if (hasKey)
-                conn.write(JSON.stringify(tableChecked) + '\n');
-            else
-                conn.write(JSON.stringify('Não há chave') + '\n');
+            if (hasKey) conn.write(JSON.stringify(tableChecked) + '\n');else conn.write(JSON.stringify('Não há chave') + '\n');
         }
     }
 
-    conn.on('error', (err) => {
+    conn.on('error', function (err) {
         console.error(err);
     });
 });
 
 // Listen for connections
-server.listen(61337, "localhost", function () {
+server.listen(61338, "localhost", function () {
     console.log("Server: Listening");
 });
+//# sourceMappingURL=server2.js.map

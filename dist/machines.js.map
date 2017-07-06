@@ -1,0 +1,1 @@
+{"version":3,"sources":["../machines.js"],"names":["exports","machines","ip"],"mappings":";;AAAAA,QAAQC,QAAR,GAAmB,CAAC,CAAC,GAAD,EAAM,EAACC,IAAI,KAAL,EAAN,CAAD,EAAoB,CAAC,GAAD,EAAM,EAACA,IAAI,KAAL,EAAN,CAApB,CAAnB","file":"machines.js","sourcesContent":["exports.machines = [['1', {ip: 61337}],['2', {ip: 61338}]];"]}
