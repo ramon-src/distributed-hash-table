@@ -3,7 +3,7 @@ const net = require("net");
 var server = net.createServer(function (conn) {
     console.log("Server: Client connected");
 
-    var hashtable = [['one', {value: 1, date: "3/7/2017"}], ['three', {value: 'from server 2', date: "4/7/2017"}], ['five', {value: 15, date: "6/7/2017"}]];
+    var hashtable = [['three', {value: 'server 3', date: "4/7/2017"}], ['five', {value: 15, date: "5/7/2017"}]];
 
     // Handle data from client
     var buffer = '';
@@ -78,6 +78,6 @@ var server = net.createServer(function (conn) {
 });
 
 // Listen for connections
-server.listen(61338, "localhost", function () {
+server.listen(61339, "localhost", function () {
     console.log("Server: Listening");
 });

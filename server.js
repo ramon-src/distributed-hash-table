@@ -5,14 +5,6 @@ var server = net.createServer(function (conn) {
 
     var hashtable = [['one', {value: 1, date: "4/7/2017"}], ['two', {value: 2, date: "4/7/2017"}]];
 
-    // If connection is closed
-    conn.on("end", function () {
-        console.log('Server: Client disconnected');
-        // Close the server
-        // server.close();
-        // // End the process
-        // process.exit(0);
-    });
 
     // Handle data from client
     var buffer = '';
@@ -24,6 +16,7 @@ var server = net.createServer(function (conn) {
             var msg = buffer + data.substring(0, data.indexOf('\n'));
             buffer = data.substring(data.indexOf('\n') + 1);
             var dataMessage = JSON.parse(msg);
+
             doActions(dataMessage);
         }
 
@@ -38,6 +31,7 @@ var server = net.createServer(function (conn) {
             if (table[0] == obj[1].key) {
                 hasKey = true;
                 tableChecked = table;
+                tableChecked[1].key = obj[1].key;
                 console.log("Escolhido: %s", table[0]);
             }
         });
@@ -74,6 +68,10 @@ var server = net.createServer(function (conn) {
                 conn.write(JSON.stringify('Não há chave') + '\n');
         }
     }
+
+    conn.on("end", function () {
+        console.log('Server: Client disconnected');
+    });
 
     conn.on('error', (err) => {
         console.error(err);

@@ -1,1 +1,1 @@
-exports.machines = [{ip: 61337}, {ip: 61338}];
+exports.machines = [{ip: 61337}, {ip: 61338}, {ip: 61339}];
